@@ -1,0 +1,9 @@
+# Ignore database config file
+config/database.php
+
+# Local documentation files (only kept on local machine)
+# Each subfolder has a README.md explaining its contents
+*/README.md
+*/*/README.md
+TEST_SCENARIOS.md
+extensions.txt

@@ -1,0 +1,25 @@
+<?php
+
+class Database {
+    private static $host = '';      // hostname
+    private static $db_name = '';   // database name
+    private static $port = '';      // port
+    private static $username = '';  // username
+    private static $password = '';  // password
+    private static $conn;
+
+    public static function getConnection() {
+        if (self::$conn === null) {
+            try {
+                self::$conn = new PDO("mysql:host=" . self::$host . ";port=" . self::$port . ";dbname=" . self::$db_name . ";charset=utf8mb4", self::$username, self::$password);
+                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            } catch(PDOException $exception) {
+                echo "Lỗi kết nối CSDL: " . $exception->getMessage();
+                die();
+            }
+        }
+        return self::$conn;
+    }
+}
+?>
